@@ -12,6 +12,7 @@ class EnfScraperItem(scrapy.Item):
     company_name = scrapy.Field()
     pv_name = scrapy.Field()
     pv_model = scrapy.Field()
+    pv_type= scrapy.Field()
 
    # electrical features in stc (standard test conditions )
     pmax_stc = scrapy.Field()

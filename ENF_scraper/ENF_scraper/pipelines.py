@@ -17,7 +17,7 @@ import openpyxl
 
 from ENF_scraper.settings import XLSX_PATH
 
-FIELDNAMES = ['company name', 'pv name','pv model', 'pmax stc', 'vmax stc', 'voc stc', 'isc stc', 'imax stc', 'efficiency stc', 'tolerance', 'pmax noct',
+FIELDNAMES = ['company name', 'pv name','pv model', 'pv_type','pmax stc', 'vmax stc', 'voc stc', 'isc stc', 'imax stc', 'efficiency stc', 'tolerance', 'pmax noct',
               'vmax noct', 'voc noct', 'isc noct', 'imax noct', 'temp noct', 'temp range', 'temp pmax coef', 'temp voc coef', 'temp isc coef']
 
 
@@ -37,6 +37,7 @@ class EnfScraperPipeline(object):
         self.ws.append([adapter.get("company_name"),
                         adapter.get("pv_name"),
                         adapter.get("pv_model"),
+                        adapter.get("pv_type"),
                         adapter.get("pmax_stc"), 
                         adapter.get("vmax_stc"), 
                         adapter.get("voc_stc"), 

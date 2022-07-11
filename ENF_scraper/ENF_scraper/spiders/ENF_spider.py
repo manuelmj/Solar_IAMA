@@ -2,8 +2,6 @@
 # Autor1: Alexander Arroyo Granados
 # Autor2: Manuel Manjarres Rivera
 
-from gc import callbacks
-from re import X
 import scrapy
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors import LinkExtractor
@@ -157,8 +155,8 @@ class ENF_spider(CrawlSpider):
             dictionary of list that contain values of thermal features.
         """
 
-        temp_parameters = ("Temperatura", "Rango de Temperatura", "Coeficiente de Temperatura Pmax",
-                           "Coeficiente de Temperatura Voc", "Coeficiente de Temperatura Isc")
+        temp_parameters = ("Temperatura", "Rango de Temperatura", "Coeficiente de Temperatura de Pmax",
+                           "Coeficiente de Temperatura de Voc", "Coeficiente de Temperatura de Isc")
         temp_parameters_dict = dict()
         for parameter in temp_parameters:
             if parameter in data_lst:
@@ -205,7 +203,8 @@ class ENF_spider(CrawlSpider):
         pv_name = [basic_information[1] for x in range(len(pmax_stc))]
         pv_model = self.data_pre_normalizer(response.xpath(
             '//*[@id="product_info"]/div[1]/table/tbody/tr[contains(th,"No.")]/descendant::*/text()').getall())
-
+        pv_type = self.data_pre_normalizer(response.xpath('//td[contains(@class,"yellow")]/text()').getall())
+        pv_type =[pv_type[0] for x in range(len(pmax_stc))]
         # Extracting thermal features
         thermal_features = self.data_pre_normalizer(response.xpath(
             '//*[@id="product_info"]/div[1]/table/tbody/tr[contains(th,"Temperatura")]/descendant::*/text()').getall())
@@ -217,6 +216,7 @@ class ENF_spider(CrawlSpider):
             company_name,
             pv_name,
             pv_model,
+            pv_type,
             pmax_stc,
             vmax_stc,
             voc_stc,
@@ -231,13 +231,37 @@ class ENF_spider(CrawlSpider):
             imax_noct,
             thermal_features_dict["Temperatura"],
             thermal_features_dict["Rango de Temperatura"],
-            thermal_features_dict["Coeficiente de Temperatura Pmax"],
-            thermal_features_dict["Coeficiente de Temperatura Voc"],
-            thermal_features_dict["Coeficiente de Temperatura Isc"])
+            thermal_features_dict["Coeficiente de Temperatura de Pmax"],
+            thermal_features_dict["Coeficiente de Temperatura de Voc"],
+            thermal_features_dict["Coeficiente de Temperatura de Isc"])
         
-        list_fields = list(dict(self.enf_item.fields).keys())
+        list_fields = [
+                    'company_name',
+                    'pv_name', 
+                    'pv_model', 
+                    'pv_type',
+                    'pmax_stc', 
+                    'vmax_stc', 
+                    'voc_stc', 
+                    'isc_stc', 
+                    'imax_stc', 
+                    'efficiency_stc', 
+                    'tolerance', 
+                    'pmax_noct', 
+                    'vmax_noct', 
+                    'voc_noct', 
+                    'isc_noct', 
+                    'imax_noct', 
+                    'temp_noct', 
+                    'temp_range', 
+                    'temp_pmax_coef', 
+                    'temp_voc_coef', 
+                    'temp_isc_coef']
+
         for row in rows:
             
             self.enf_item = {key:row[list_fields.index(key)] for key in list_fields}
+
+
 
             yield self.enf_item
