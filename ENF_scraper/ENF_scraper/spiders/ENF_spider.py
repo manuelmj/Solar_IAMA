@@ -1,6 +1,10 @@
-# Date:jul/7/2022
-# Autor1: Alexander Arroyo Granados
-# Autor2: Manuel Manjarres Rivera
+# jul/7/2022
+#this project scrapes the Enfsolar website to download information of 
+#the photovoltaic panels available in Colombia, in order to do a research 
+#work with data collection. 
+#The code was developed by: Alexander Arroyo Granados and Manuel Manjarres Rivera 
+#
+
 
 import scrapy
 from scrapy.spiders import CrawlSpider, Rule

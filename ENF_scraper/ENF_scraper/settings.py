@@ -74,7 +74,8 @@ DOWNLOADER_MIDDLEWARES = {
 ITEM_PIPELINES = {
     'ENF_scraper.pipelines.EnfScraperPipeline': 300,
  }
-XLSX_PATH = 'efnsolar_datasheet.xlsx'
+# name of the file where the scraped data will
+XLSX_PATH = 'enfsolar_datasheet.xlsx'
 
 
 # Enable and configure the AutoThrottle extension (disabled by default)
