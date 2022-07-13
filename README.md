@@ -1,1 +1,1 @@
-# Solar_AIMA
+# Solar_IAMA
