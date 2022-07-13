@@ -207,6 +207,7 @@ class ENF_spider(CrawlSpider):
         pv_name = [basic_information[1] for x in range(len(pmax_stc))]
         pv_model = self.data_pre_normalizer(response.xpath(
             '//*[@id="product_info"]/div[1]/table/tbody/tr[contains(th,"No.")]/descendant::*/text()').getall())
+        pv_model = pv_model[1:]
         pv_type = self.data_pre_normalizer(response.xpath('//td[contains(@class,"yellow")]/text()').getall())
         pv_type =[pv_type[0] for x in range(len(pmax_stc))]
         # Extracting thermal features
