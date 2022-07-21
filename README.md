@@ -1,10 +1,10 @@
 # Solar_IAMA
 
 # ***Table of contents***
-- [X] 1. [**Web Scraping**](https://github.com/manuelmj/Solar_IAMA/edit/main/README.md#web-scraping)
-- [ ] 2. [**Analysis and standardization of data**](https://github.com/manuelmj/Solar_IAMA/edit/main/README.md#data-analytics)
-- [ ] 3. [**Training of the model**](https://github.com/manuelmj/Solar_IAMA/edit/main/README.md#Training-of-the-model)
-- [ ] 4. [**Website**](https://github.com/manuelmj/Solar_IAMA/edit/main/README.md#wensite)
+- [X] 1. [**Web Scraping**](https://github.com/manuelmj/Solar_IAMA/main/README.md#web-scraping)
+- [ ] 2. [**Analysis and standardization of data**](https://github.com/manuelmj/Solar_IAMA/main/README.md#data-analytics)
+- [ ] 3. [**Training of the model**](https://github.com/manuelmj/Solar_IAMA/main/README.md#Training-of-the-model)
+- [ ] 4. [**Website**](https://github.com/manuelmj/Solar_IAMA/main/README.md#wensite)
 
 
 ## ***Abstrac***
