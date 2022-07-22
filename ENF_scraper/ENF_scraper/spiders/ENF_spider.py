@@ -1,8 +1,8 @@
 # jul/7/2022
-#this project scrapes the Enfsolar website to download information of 
-#the photovoltaic panels available in Colombia, in order to do a research 
-#work with data collection. 
-#The code was developed by: Alexander Arroyo Granados and Manuel Manjarres Rivera 
+# this project scrapes the Enfsolar website to download information of
+# the photovoltaic panels available in Colombia, in order to do a research
+# work with data collection.
+# The code was developed by: Alexander Arroyo Granados and Manuel Manjarres Rivera
 #
 
 
@@ -11,7 +11,6 @@ from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors import LinkExtractor
 from scrapy.exceptions import CloseSpider
 from ENF_scraper.items import EnfScraperItem
-
 
 
 class ENF_spider(CrawlSpider):
@@ -51,24 +50,31 @@ class ENF_spider(CrawlSpider):
     name = "enfsolar"
     allowed_domains = ['es.enfsolar.com']
     start_urls = [
-                'https://es.enfsolar.com/jinko-solar',
-                'https://es.enfsolar.com/yingli-green-energy',
-                'https://es.enfsolar.com/kyocera',
-                'https://es.enfsolar.com/suntech-power',
-                'https://es.enfsolar.com/csi-solar',
-                'https://es.enfsolar.com/ja-solar',
-                'https://es.enfsolar.com/inti-solar-3',
-                'https://es.enfsolar.com/risen-energy',
-                'https://es.enfsolar.com/znshine-solar',
-                'https://es.enfsolar.com/jinko-solar',
-                'https://es.enfsolar.com/osda-solar',
-                'https://es.enfsolar.com/longi-solar-1-2-1-2',
-                'https://es.enfsolar.com/solartech-power',
-                'https://es.enfsolar.com/renesola',
-                'https://es.enfsolar.com/gclsi',
-                'https://es.enfsolar.com/sharp',
-                'https://es.enfsolar.com/lg-electronics-1-2'
-                  ]
+        'https://es.enfsolar.com/jinko-solar',
+        'https://es.enfsolar.com/yingli-green-energy',
+        'https://es.enfsolar.com/kyocera',
+        'https://es.enfsolar.com/suntech-power',
+        'https://es.enfsolar.com/csi-solar',
+        'https://es.enfsolar.com/ja-solar',
+        'https://es.enfsolar.com/inti-solar-3',
+        'https://es.enfsolar.com/risen-energy',
+        'https://es.enfsolar.com/znshine-solar',
+        'https://es.enfsolar.com/jinko-solar',
+        'https://es.enfsolar.com/osda-solar',
+        'https://es.enfsolar.com/longi-solar-1-2-1-2',
+        'https://es.enfsolar.com/solartech-power',
+        'https://es.enfsolar.com/renesola',
+        'https://es.enfsolar.com/gclsi',
+        'https://es.enfsolar.com/sharp',
+        'https://es.enfsolar.com/lg-electronics-1-2',
+        'https://es.enfsolar.com/csun',
+        'https://es.enfsolar.com/ae-solar',
+        'https://es.enfsolar.com/luxen-solar',
+        'https://es.enfsolar.com/restar-solar-energy',
+        'https://es.enfsolar.com/trina-solar-1',
+        'https://es.enfsolar.com/wwmusa-amerisolar',
+        'https://es.enfsolar.com/hyundai-energy-solutions'
+    ]
     xpath = '//li[contains(@class,"clearfix")]/a'
     enf_item = EnfScraperItem()
 
@@ -208,8 +214,9 @@ class ENF_spider(CrawlSpider):
         pv_model = self.data_pre_normalizer(response.xpath(
             '//*[@id="product_info"]/div[1]/table/tbody/tr[contains(th,"No.")]/descendant::*/text()').getall())
         pv_model = pv_model[1:]
-        pv_type = self.data_pre_normalizer(response.xpath('//td[contains(@class,"yellow")]/text()').getall())
-        pv_type =[pv_type[0] for x in range(len(pmax_stc))]
+        pv_type = self.data_pre_normalizer(response.xpath(
+            '//td[contains(@class,"yellow")]/text()').getall())
+        pv_type = [pv_type[0] for x in range(len(pmax_stc))]
         # Extracting thermal features
         thermal_features = self.data_pre_normalizer(response.xpath(
             '//*[@id="product_info"]/div[1]/table/tbody/tr[contains(th,"Temperatura")]/descendant::*/text()').getall())
@@ -239,34 +246,33 @@ class ENF_spider(CrawlSpider):
             thermal_features_dict["Coeficiente de Temperatura de Pmax"],
             thermal_features_dict["Coeficiente de Temperatura de Voc"],
             thermal_features_dict["Coeficiente de Temperatura de Isc"])
-        
+
         list_fields = [
-                    'company_name',
-                    'pv_name', 
-                    'pv_model', 
-                    'pv_type',
-                    'pmax_stc', 
-                    'vmax_stc', 
-                    'voc_stc', 
-                    'isc_stc', 
-                    'imax_stc', 
-                    'efficiency_stc', 
-                    'tolerance', 
-                    'pmax_noct', 
-                    'vmax_noct', 
-                    'voc_noct', 
-                    'isc_noct', 
-                    'imax_noct', 
-                    'temp_noct', 
-                    'temp_range', 
-                    'temp_pmax_coef', 
-                    'temp_voc_coef', 
-                    'temp_isc_coef']
+            'company_name',
+            'pv_name',
+            'pv_model',
+            'pv_type',
+            'pmax_stc',
+            'vmax_stc',
+            'voc_stc',
+            'isc_stc',
+            'imax_stc',
+            'efficiency_stc',
+            'tolerance',
+            'pmax_noct',
+            'vmax_noct',
+            'voc_noct',
+            'isc_noct',
+            'imax_noct',
+            'temp_noct',
+            'temp_range',
+            'temp_pmax_coef',
+            'temp_voc_coef',
+            'temp_isc_coef']
 
         for row in rows:
-            
-            self.enf_item = {key:row[list_fields.index(key)] for key in list_fields}
 
-
+            self.enf_item = {
+                key: row[list_fields.index(key)] for key in list_fields}
 
             yield self.enf_item
