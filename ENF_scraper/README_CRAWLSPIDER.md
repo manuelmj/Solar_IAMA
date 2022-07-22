@@ -24,7 +24,7 @@ This pipeline stores the data in an excel file structured as follows[^1] :
 [***click here to view code***](https://github.com/manuelmj/Solar_IAMA/blob/main/ENF_scraper/ENF_scraper/pipelines.py)
 
 ## ***Settings***
-The behavior of this crawlspider is based on the given configurations. in this case during scraping a maximum of two requests are made at a time every 10 seconds, a _rotating user agent_[^2] is also implemented. [***click here to view code***](https://github.com/manuelmj/Solar_IAMA/blob/main/ENF_scraper/ENF_scraper/settings.py)
+The behavior of this crawlspider is based on the given configurations. In this case during scraping a maximum of two requests are made at a time every 10 seconds, a _rotating user agent_[^2] is also implemented. [***click here to view code***](https://github.com/manuelmj/Solar_IAMA/blob/main/ENF_scraper/ENF_scraper/settings.py)
 
 ## **Results**
 
