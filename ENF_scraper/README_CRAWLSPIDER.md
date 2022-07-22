@@ -13,10 +13,18 @@ This is a crawlSpider in charge of scraping [_ENFsolar_](https://es.enfsolar.com
 
 
 ## ***Items***
-The elements necessary for the structuring of the data are found in this section, divided into four categories containing data on STC and NOCT conditions, thermal characteristics and basic information on the photovoltaic panel. [***click here to view code***](https://github.com/manuelmj/Solar_IAMA/blob/main/ENF_scraper/ENF_scraper/items.py)
-
+The elements necessary for the structuring of the data are found in this section, divided into four categories containing data on STC and NOCT conditions, thermal characteristics and basic information on the photovoltaic panel[^1]. [***click here to view code***](https://github.com/manuelmj/Solar_IAMA/blob/main/ENF_scraper/ENF_scraper/items.py)
+|basic information| standard test conditions| nominal operating cell temperature |Thermal Ratings |
+| :---|              :---|                    :--- |                              :--- |   
+|company name|      maximun power|              maximun power|                    operating temperature range|
+|panel name |       voltage at maximum power|   voltage at maximun power|         temperature coefficient of Pmax |
+|panel model |      current at maximun power|   current at maximun power|         temperature coefficient of Voc  |
+|tecnology |        open circuit voltage|       open circuit voltage|             temperature coefficient of Isc  |
+||                  short circuit current |     short circuit current|
+||                  panel efficiency|           temperature|
+||                  power tolerance|
 ## ***Pipleines***
-This pipeline stores the data in an excel file structured as follows[^1] : 
+This pipeline stores the data in an excel file structured as follows[^2] : 
 
 |company name |pv name|pv model|pv_type|pmax stc|vmax stc|voc stc|isc stc|imax stc|efficiency stc|tolerance|pmax noct|vmax noct|voc noct|isc noct|imax noct|temp noct|temp range|temp pmax coef|temp voc coef|temp isc coef|
 | :---|:---:|:---:| :---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|---:|
@@ -24,10 +32,11 @@ This pipeline stores the data in an excel file structured as follows[^1] :
 [***click here to view code***](https://github.com/manuelmj/Solar_IAMA/blob/main/ENF_scraper/ENF_scraper/pipelines.py)
 
 ## ***Settings***
-The behavior of this crawlspider is based on the given configurations. In this case during scraping a maximum of two requests are made at a time every 10 seconds, a _rotating user agent_[^2] is also implemented. [***click here to view code***](https://github.com/manuelmj/Solar_IAMA/blob/main/ENF_scraper/ENF_scraper/settings.py)
+The behavior of this crawlspider is based on the given configurations. In this case during scraping a maximum of two requests are made at a time every 10 seconds, a _rotating user agent_[^3] is also implemented. [***click here to view code***](https://github.com/manuelmj/Solar_IAMA/blob/main/ENF_scraper/ENF_scraper/settings.py)
 
 ## **Results**
 
 
-[^1]: [_excel file_](https://github.com/manuelmj/Solar_IAMA/blob/main/ENF_scraper/ENF_scraper/enfsolar_datasheet.xlsx) 
-[^2]: [_rotative user agent_]()
+[^1]: [general information of panel](https://es.enfsolar.com/pv/panel-datasheet/crystalline/51157?utm_source=ENF&utm_medium=panel_profile&utm_campaign=enquiry_company_directory&utm_content=4383) 
+[^2]:[_excel file_](https://github.com/manuelmj/Solar_IAMA/blob/main/ENF_scraper/ENF_scraper/enfsolar_datasheet.xlsx) 
+[^3]: [_rotative user agent_]()
