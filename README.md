@@ -15,7 +15,7 @@
 
 ## ***Web Scraping***
 
-in this section of the project, the [_Scrapy framework_](https://scrapy.org) was used to perform a scraping of the [_Enfsolar_](https://es.enfsolar.com) website to download information about the photovoltaic panels available in Colombia[^1], in order to  perform a research work with data collection.
+In this section of the project, the [_Scrapy framework_](https://scrapy.org) was used to perform a scraping of the [_Enfsolar_](https://es.enfsolar.com) website to download information about the photovoltaic panels available in Colombia[^1], in order to  perform a research work with data collection.
 The result was more than 1500 data in an excel file with _STC_, _NOCT_ and _THERMAL CHARACTERISTICS_ information corresponding to the solar panel[^2].
 the code and the explanation can be seen in the following link [***web scraping***](https://github.com/manuelmj/Solar_IAMA/tree/main/ENF_scraper) or [***README_CRAWLSPIDER.md***](https://github.com/manuelmj/Solar_IAMA/blob/main/ENF_scraper/README_CRAWLSPIDER.md)
 
