@@ -13,7 +13,7 @@ This is a crawlSpider in charge of scraping [_ENFsolar_](https://es.enfsolar.com
 
 
 ## ***Items***
-The elements necessary for the structuring of the data are found in this section, divided into four categories containing data on STC and NOCT conditions and  thermal characteristics and basic information on the photovoltaic panel. [***click here to view code***](https://github.com/manuelmj/Solar_IAMA/blob/main/ENF_scraper/ENF_scraper/items.py)
+The elements necessary for the structuring of the data are found in this section, divided into four categories containing data on STC and NOCT conditions, thermal characteristics and basic information on the photovoltaic panel. [***click here to view code***](https://github.com/manuelmj/Solar_IAMA/blob/main/ENF_scraper/ENF_scraper/items.py)
 
 ## ***Pipleines***
 This pipeline stores the data in an excel file structured as follows[^1] : 
