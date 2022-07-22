@@ -1,20 +1,16 @@
-<<<<<<< HEAD
 # Solar_AIMA
 =======
 # Solar_IAMA
 
 # ***Table of contents***
 - [X] 1. [**Web Scraping**](https://github.com/manuelmj/Solar_IAMA/blob/main/README.md#web-scraping)                        
-- [ ] 2. [**Analysis and standardization of data**](https://github.com/manuelmj/Solar_IAMA/blob/main/README.md#data-analytics)
+- [ ] 2. [**Analysis and standardization of data**](https://github.com/manuelmj/Solar_IAMA/blob/main/README.md#Data-analytics)
 - [ ] 3. [**Training of the model**](https://github.com/manuelmj/Solar_IAMA/blob/main/README.md#Training-of-the-model)
-- [ ] 4. [**Website**](https://github.com/manuelmj/Solar_IAMA/blob/main/README.md#website)
+- [ ] 4. [**Website**](https://github.com/manuelmj/Solar_IAMA/blob/main/README.md#Website)
 
 
 ## ***Abstrac***
-```
-  -
-  -
-```
+
 
 
 ## ***Web Scraping***
@@ -27,12 +23,11 @@ the code and the explanation can be seen in the following link [**_web scraping_
 [^2]:[_Download the excel file_](https://github.com/manuelmj/Solar_IAMA/blob/main/ENF_scraper/ENF_scraper/enfsolar_datasheet.xlsx)
 
 
-##  ***data analytics***
+##  ***Data analytics***
 
 
 ## ***Training of the model***
 
-## ***website***
+## ***Website***
 
->>>>>>> 55f7e119e9ea4d39b5666bfd7713888264c77d98
 
