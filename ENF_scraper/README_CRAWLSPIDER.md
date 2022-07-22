@@ -23,7 +23,7 @@ The elements necessary for the structuring of the data are found in this section
 ||                  short circuit current |     short circuit current|
 ||                  panel efficiency|           temperature|
 ||                  power tolerance|
-## ***Pipleines***
+## ***Pipelines***
 This pipeline stores the data in an excel file structured as follows[^2] : 
 
 |company name |pv name|pv model|pv_type|pmax stc|vmax stc|voc stc|isc stc|imax stc|efficiency stc|tolerance|pmax noct|vmax noct|voc noct|isc noct|imax noct|temp noct|temp range|temp pmax coef|temp voc coef|temp isc coef|
