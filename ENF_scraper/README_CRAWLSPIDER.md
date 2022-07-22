@@ -1,10 +1,10 @@
 # CrawlSpider
 
 ## ***Table of contents***
-- [X] 1. [**Spider**](https://github.com/manuelmj/Solar_IAMA/tree/main/ENF_scraper/ENF_scraper/spiders)
-- [X] 2. [**Items**](https://github.com/manuelmj/Solar_IAMA/blob/main/ENF_scraper/ENF_scraper/items.py)
-- [X] 3. [**Pipelines**](https://github.com/manuelmj/Solar_IAMA/blob/main/ENF_scraper/ENF_scraper/pipelines.py)
-- [X] 1. [**Settings**](https://github.com/manuelmj/Solar_IAMA/blob/main/ENF_scraper/ENF_scraper/settings.py)
+- [X] 1. [**Spider**](https://github.com/manuelmj/Solar_IAMA/blob/main/ENF_scraper/README_CRAWLSPIDER.md#spiders)
+- [X] 2. [**Items**](https://github.com/manuelmj/Solar_IAMA/blob/main/ENF_scraper/README_CRAWLSPIDER.md#items.py)
+- [X] 3. [**Pipelines**](https://github.com/manuelmj/Solar_IAMA/blob/main/ENF_scraper/README_CRAWLSPIDER.md#pipelines.py)
+- [X] 1. [**Settings**](https://github.com/manuelmj/Solar_IAMA/blob/main/ENF_scraper/README_CRAWLSPIDER.md#settings.py)
 
 ## ***Abstrac***
 This is a crawlSpider in charge of scraping [_ENFsolar_](https://es.enfsolar.com), this bot downloads information of photovoltaic panels, and reorganizes the data in data structures, for this we use more than 20 links of manufacturer's pages that contain information of their panels as data in _STC_, _NOCT_ and _THERMAL CHARACTERISTICS_ conditions, these three categories contain relevant information for this research.
@@ -14,7 +14,7 @@ This is a crawlSpider in charge of scraping [_ENFsolar_](https://es.enfsolar.com
 
 ## ***Items***
 The elements necessary for the structuring of the data are found in this section, divided into four categories containing data on STC and NOCT conditions, thermal characteristics and basic information on the photovoltaic panel[^1]. [***click here to view code***](https://github.com/manuelmj/Solar_IAMA/blob/main/ENF_scraper/ENF_scraper/items.py)
-|basic information| standard test conditions| nominal operating cell temperature |Thermal Ratings |
+|***basic information***| ***standard test conditions***| ***nominal operating cell temperature*** |***Thermal Ratings*** |
 | :---|              :---|                    :--- |                              :--- |   
 |company name|      maximun power|              maximun power|                    operating temperature range|
 |panel name |       voltage at maximum power|   voltage at maximun power|         temperature coefficient of Pmax |
