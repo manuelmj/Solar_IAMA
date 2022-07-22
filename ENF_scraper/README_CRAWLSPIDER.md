@@ -1,6 +1,6 @@
 # CrawlSpider
 
-## ***Table of contenst***
+## ***Table of contents***
 - [X] 1. [**Spider**](https://github.com/manuelmj/Solar_IAMA/tree/main/ENF_scraper/ENF_scraper/spiders)
 - [X] 2. [**Items**](https://github.com/manuelmj/Solar_IAMA/blob/main/ENF_scraper/ENF_scraper/items.py)
 - [X] 3. [**Pipelines**](https://github.com/manuelmj/Solar_IAMA/blob/main/ENF_scraper/ENF_scraper/pipelines.py)
