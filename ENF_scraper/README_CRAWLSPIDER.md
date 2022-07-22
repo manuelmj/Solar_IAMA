@@ -46,6 +46,16 @@ The behavior of this crawlspider is based on the given configurations. In this c
 62    'scrapy_user_agents.middlewares.RandomUserAgentMiddleware': 400,
 63  }
 ```
+also we configure the pipeline for stores the data in a excel file. 
+```
+72  # Configure item pipelines
+73  # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
+74  ITEM_PIPELINES = {
+75      'ENF_scraper.pipelines.EnfScraperPipeline': 300,
+76   }
+77  # name of the file where the scraped data will
+78  XLSX_PATH = 'enfsolar_datasheet.xlsx'
+```
 
 ## **Results**
 
