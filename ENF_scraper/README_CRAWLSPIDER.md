@@ -25,7 +25,7 @@ Secondly, the spider rules are defined, in this case, the spider goes into the l
 84    }
 ```
 
-The parse_items method extracts all the necessary data from the links, using the xpath expressions to extract the information from each location within the html or css.
+The ***parse_items*** method extracts all the necessary data from the links, using the xpath expressions to extract the information from each location within the html or css.
 ```
 182     # extracting the stc and noct values
 183        pmax_stc_noct = self.data_pre_normalizer(response.xpath(
@@ -39,8 +39,42 @@ The parse_items method extracts all the necessary data from the links, using the
 191        imax_stc_noct = self.data_pre_normalizer(response.xpath(
 192            '//*[@id="product_info"]/div[1]/table/tbody/tr[contains(th,"(Imax)")]/descendant::*/text()').getall())
 
+201       # extracting the efficiency  and tolerance values
+202        efficiency_stc = self.data_pre_normalizer(response.xpath(
+203            '//*[@id="product_info"]/div[1]/table/tbody/tr[contains(th,"Eficiencia")]/descendant::*/text()').getall())
+204        efficiency_stc = self.is_empty_none(len(pmax_stc), efficiency_stc[1:])
+205        tolerance = self.data_pre_normalizer(response.xpath(
+206            '//*[@id="product_info"]/div[1]/table/tbody/tr[contains(th,"(+)")]/descendant::*/text()').getall())
+207        tolerance = self.is_empty_none(len(pmax_stc), tolerance[1:])
+208
+209        # Extracting basic information about the PV
+210        basic_information = self.data_pre_normalizer(
+211            response.css('title::text').get().split('|'))
+212        company_name = [basic_information[0] for x in range(len(pmax_stc))]
+213        pv_name = [basic_information[1] for x in range(len(pmax_stc))]
+214        pv_model = self.data_pre_normalizer(response.xpath(
+215            '//*[@id="product_info"]/div[1]/table/tbody/tr[contains(th,"No.")]/descendant::*/text()').getall())
+216        pv_model = pv_model[1:]
+217        pv_type = self.data_pre_normalizer(response.xpath(
+218            '//td[contains(@class,"yellow")]/text()').getall())
+219        pv_type = [pv_type[0] for x in range(len(pmax_stc))]
+220        # Extracting thermal features
+221        thermal_features = self.data_pre_normalizer(response.xpath(
+222            '//*[@id="product_info"]/div[1]/table/tbody/tr[contains(th,"Temperatura")]/descendant::*/text()').getall())
+223        thermal_features_dict = self.tempt_verifier(
+224            len(pmax_stc), thermal_features)
+
 
 ```
+Once the data is xtracted and normalized, we use the [***zip()***](https://www.google.com/search?client=opera&q=the+functions+zip+in+python&sourceid=opera&ie=UTF-8&oe=UTF-8) function to assemble the rows.
+then we yield to each of the items 
+```
+275           self.enf_item = {
+276                key: row[list_fields.index(key)] for key in list_fields}
+278
+278            yield self.enf_item
+```
+
 
 
 
