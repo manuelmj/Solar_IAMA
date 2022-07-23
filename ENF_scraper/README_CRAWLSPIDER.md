@@ -11,6 +11,38 @@ This is a crawlSpider in charge of scraping [_ENFsolar_](https://es.enfsolar.com
 
 ## ***Spiders***
 
+The spider works as follows, first the links and the domain to follow are defined
+```
+50  name = "the spider name"
+51  allowed_domains = ['the dominian to follow']
+52  start_urls = [the list of links ]
+```
+Secondly, the spider rules are defined, in this case, the spider goes into the links and extracts all the links from the panels of each of the manufacturers
+```
+81    rules = {
+82        Rule(LinkExtractor(allow=(), restrict_xpaths=(xpath)),
+83             callback="parse_item", follow=False)
+84    }
+```
+
+The parse_items method extracts all the necessary data from the links, using the xpath expressions to extract the information from each location within the html or css.
+```
+182     # extracting the stc and noct values
+183        pmax_stc_noct = self.data_pre_normalizer(response.xpath(
+184            '//*[@id="product_info"]/div[1]/table/tbody/tr[contains(th,"(Pmax)")]/descendant::*/text()').getall())
+185        vmax_stc_noct = self.data_pre_normalizer(response.xpath(
+186            '//*[@id="product_info"]/div[1]/table/tbody/tr[contains(th,"(Vmax)")]/descendant::*/text()').getall())
+187        voc_stc_noct = self.data_pre_normalizer(response.xpath(
+188            '//*[@id="product_info"]/div[1]/table/tbody/tr[contains(th,"(Voc)")]/descendant::*/text()').getall())
+199        isc_stc_noct = self.data_pre_normalizer(response.xpath(
+190            '//*[@id="product_info"]/div[1]/table/tbody/tr[contains(th,"(Isc)")]/descendant::*/text()').getall())
+191        imax_stc_noct = self.data_pre_normalizer(response.xpath(
+192            '//*[@id="product_info"]/div[1]/table/tbody/tr[contains(th,"(Imax)")]/descendant::*/text()').getall())
+
+
+```
+
+
 
 ## ***Items***
 The elements necessary for the structuring of the data are found in this section, divided into four categories containing data on STC and NOCT conditions, thermal characteristics and basic information on the photovoltaic panel[^1]. [***click here to view code***](https://github.com/manuelmj/Solar_IAMA/blob/main/ENF_scraper/ENF_scraper/items.py)
