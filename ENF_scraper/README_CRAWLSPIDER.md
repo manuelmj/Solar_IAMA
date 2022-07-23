@@ -11,13 +11,13 @@ This is a crawlSpider in charge of scraping [_ENFsolar_](https://es.enfsolar.com
 
 ## ***Spiders***
 
-The spider works as follows, first the links and the domain to follow are defined
+The spider works as follows, first the links and the domain to follow are defined. [***click here to view code***](https://github.com/manuelmj/Solar_IAMA/blob/main/ENF_scraper/ENF_scraper/spiders/ENF_spider.py)
 ```
 50  name = "the spider name"
 51  allowed_domains = ['the dominian to follow']
 52  start_urls = [the list of links ]
 ```
-Secondly, the spider rules are defined, in this case, the spider goes into the links and extracts all the links from the panels of each of the manufacturers
+Secondly, the spider rules are defined, in this case, the spider goes into the links and extracts all the links from the panels of each of the manufacturers. [***click here to view code***](https://github.com/manuelmj/Solar_IAMA/blob/main/ENF_scraper/ENF_scraper/spiders/ENF_spider.py)
 ```
 81    rules = {
 82        Rule(LinkExtractor(allow=(), restrict_xpaths=(xpath)),
@@ -25,7 +25,7 @@ Secondly, the spider rules are defined, in this case, the spider goes into the l
 84    }
 ```
 
-The ***parse_items*** method extracts all the necessary data from the links, using the xpath expressions to extract the information from each location within the html or css.
+The ***parse_items*** method extracts all the necessary data from the links, using the xpath expressions to extract the information from each location within the html or css. [***click here to view code***](https://github.com/manuelmj/Solar_IAMA/blob/main/ENF_scraper/ENF_scraper/spiders/ENF_spider.py)
 ```
 182     # extracting the stc and noct values
 183        pmax_stc_noct = self.data_pre_normalizer(response.xpath(
@@ -69,6 +69,32 @@ The ***parse_items*** method extracts all the necessary data from the links, usi
 Once the data is xtracted and normalized, we use the [***zip()***](https://www.google.com/search?client=opera&q=the+functions+zip+in+python&sourceid=opera&ie=UTF-8&oe=UTF-8) function to assemble the rows.
 then we yield to each of the items 
 ```
+227 rows = zip(
+228            company_name,
+229            pv_name,
+230            pv_model,
+231           pv_type,
+232            pmax_stc,
+233            vmax_stc,
+234            voc_stc,
+235            isc_stc,
+236            imax_stc,
+237            efficiency_stc,
+238            tolerance,
+239            pmax_noct,
+240            vmax_noct,
+241            voc_noct,
+242            isc_noct,
+243            imax_noct,
+244            thermal_features_dict["Temperatura"],
+245            thermal_features_dict["Rango de Temperatura"],
+246            thermal_features_dict["Coeficiente de Temperatura de Pmax"],
+247            thermal_features_dict["Coeficiente de Temperatura de Voc"],
+248            thermal_features_dict["Coeficiente de Temperatura de Isc"])
+
+------------------------------------------------------------------------------------
+
+
 275           self.enf_item = {
 276                key: row[list_fields.index(key)] for key in list_fields}
 278
