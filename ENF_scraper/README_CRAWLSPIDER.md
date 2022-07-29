@@ -150,7 +150,7 @@ also we configure the pipeline for stores the data in a excel file.
 ```
 
 ## **Results**
-an excel file with more than 2000 structured data with information about photovoltaic panels containing test data on stc, noct and thermal characteristics[^2],grouped data tables and power bi representation of the data[^4]. Also this guide for the implementation of spider crawls using the scrapy framework.
+an excel file with more than 2000 structured data with information about photovoltaic panels containing test data on stc, noct and thermal characteristics[^2],grouped data tables and power bi representation of the data[^4][^5]. Also this guide for the implementation of spider crawls using the scrapy framework.
 
 
 [^1]: [general information of panel](https://es.enfsolar.com/pv/panel-datasheet/crystalline/51157?utm_source=ENF&utm_medium=panel_profile&utm_campaign=enquiry_company_directory&utm_content=4383) 
